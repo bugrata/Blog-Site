@@ -1,0 +1,23 @@
+<%- include("partials/header") -%>
+
+<h1>Home</h1>
+
+<p> <%= homeText %> </p>
+
+<% postArray.forEach(function(post){ %>
+    <h2> <%= post.title %> </h2>
+    <% if (post.content.length>100) { %>
+        <% var newContent = post.content.slice(0,100) + "..."; %>
+        <p> <%= newContent %> <a href="/posts/<%=post.title%>">Read More</a> </p>
+    <% } else { %>
+        <p> <%= post.content %> </p>
+    <% } %>
+<% }) %>
+
+<br>
+<br>
+<br>
+
+<button type="button" class="btn btn-outline-dark btn-lg"><a href="/compose">Write Something New</a></button>
+
+<%- include("partials/footer") -%>
